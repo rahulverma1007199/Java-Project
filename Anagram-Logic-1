@@ -1,0 +1,34 @@
+logic 1 : Comparing one by one character 
+
+
+package practiceCoding;
+public class PracticeHacker{
+	public static void main (String args[]) {
+	String a = "abb";
+	String b = "bca";
+	int n = b.length();
+	boolean isAnagram = false;
+	boolean[] visited = new boolean[n];
+	for (int i=0;i<n;i++) {
+		char ch = a.charAt(i);
+		isAnagram = false;
+		for(int j=0;j<n;j++) {
+			if (ch==b.charAt(j)&& !visited[j]) {
+				isAnagram = true;
+				visited[j]= true;
+				break;
+			}
+			
+			}if(!isAnagram) {
+				break;
+		}
+	}
+	if(isAnagram) {
+	System.out.println("Anagram");
+	}
+	else {
+		System.out.println("Not Anagram");
+	}
+	
+	}
+		}
