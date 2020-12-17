@@ -1,0 +1,124 @@
+package codeSolve;
+import java.util.Scanner;
+
+class Code{
+	public static void main(String args[]) {
+		BankAccount rahul = new BankAccount("Rahul Verma","89XCVSWW");
+		rahul.showmenu();
+	}
+}
+class BankAccount{
+	int balance;
+	int previousamount;
+	String customername;
+	String customerid;
+	
+	BankAccount(String cname,String cid){
+		customername = cname;
+		customerid=cid;
+	}
+	
+	void deposit(int amount) {
+		if (amount > 0) {
+			balance = balance + amount ;
+			previousamount = amount;
+		}
+	}
+	
+	void withdraw(int amount) {
+		if(amount > 0 ) {
+			balance = balance - amount;
+			previousamount = -amount;
+		}
+	}
+	
+	void getpreviousamount() {
+		if (previousamount > 0) {
+			System.out.println("Deposited : " + previousamount);
+		}
+		if (previousamount < 0) {
+			System.out.println("Withdrawn  : " + Math.abs(previousamount));
+		}
+	}
+	
+	void showmenu() {
+		char option = '\0';
+		Scanner sc = new Scanner(System.in);
+		System.out.println("*************************************************************************");
+		System.out.println("Welcome "+ customername);
+		System.out.println();
+		System.out.println("Your ID "+ customerid);
+		System.out.println();
+		System.out.println("*************************************************************************");
+	    System.out.println();
+	    System.out.println("*************************************************************************");
+		System.out.println();
+	    System.out.println("Options" );
+		System.out.println();
+		System.out.println("A Deposit");
+		System.out.println();
+		System.out.println("B Withdraw");
+		System.out.println();
+		System.out.println("C Previous Amount");
+		System.out.println();
+		System.out.println("D Check Balance");
+		System.out.println();
+		System.out.println("E Exit");
+		System.out.println();
+		System.out.println("*************************************************************************");
+		
+		do {
+			System.out.println("Enter an Option");
+			System.out.println();
+			option = sc.next().charAt(0);
+			switch(option)
+			{
+			case 'A':
+				System.out.println("Enter amount :");
+				System.out.println();
+				int  amount  = sc.nextInt();
+				deposit(amount);
+				System.out.println("Deposited ");
+				System.out.println();
+				System.out.println("*************************************************************************");
+				System.out.println();
+				break;
+			case 'B':
+				System.out.println("Enter amount :");
+				System.out.println();
+				int amountt  = sc.nextInt();
+				withdraw(amountt);
+				System.out.println("Withdrawn ");
+				System.out.println();
+				System.out.println("*************************************************************************");
+				System.out.println();
+				break;
+			case 'C':
+				getpreviousamount();
+				System.out.println();
+				System.out.println("Previous Amount : "+ previousamount);
+				System.out.println();
+				System.out.println("*************************************************************************");
+				System.out.println();
+				break;
+			case 'D':
+				System.out.println("Current Balance :"+ balance);
+				System.out.println();
+				System.out.println("*************************************************************************");
+				System.out.println();
+				break;
+			case 'E':
+				break;
+				default:
+					System.out.println();
+					System.out.println("*************************************************************************");
+					System.out.println("Invalid Output");
+					break;
+				
+			}
+			
+			}while(option != 'E');
+		System.out.println("Thankyou");
+	}
+	
+}
